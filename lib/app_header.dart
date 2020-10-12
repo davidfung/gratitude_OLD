@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// App main color
 Map<int, Color> blueColorMap = {
   50: Color.fromRGBO(0x8a, 0xbe, 0xf2, .1),
   100: Color.fromRGBO(0x8a, 0xbe, 0xf2, .2),
@@ -27,3 +28,6 @@ Map<int, Color> greenColorMap = {
 };
 
 MaterialColor appColor = MaterialColor(0xFF8abef2, blueColorMap);
+MaterialColor secColor = MaterialColor(0xFFcddb89, greenColorMap);
+
+const String APP_TITLE = "Gratitude";
