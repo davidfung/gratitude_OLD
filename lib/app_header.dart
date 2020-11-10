@@ -31,3 +31,25 @@ MaterialColor appColor = MaterialColor(0xFF8abef2, blueColorMap);
 MaterialColor secColor = MaterialColor(0xFFcddb89, greenColorMap);
 
 const String APP_TITLE = "Gratitude";
+
+enum GIconID {
+  add_alert,
+  assistant_photo,
+  attach_file,
+  call,
+  directions_bike,
+  directions_walk,
+  people,
+  portrait,
+}
+
+const Map<GIconID, Icon> GIconSet = {
+  GIconID.add_alert: Icon(Icons.add_alert),
+  GIconID.assistant_photo: Icon(Icons.assistant_photo),
+  GIconID.attach_file: Icon(Icons.attach_file),
+  GIconID.call: Icon(Icons.call),
+  GIconID.directions_bike: Icon(Icons.directions_bike),
+  GIconID.directions_walk: Icon(Icons.directions_walk),
+  GIconID.people: Icon(Icons.people),
+  GIconID.portrait: Icon(Icons.portrait),
+};
