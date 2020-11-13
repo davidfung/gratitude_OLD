@@ -26,6 +26,7 @@ Future<void> initDatabase() async {
     // if the database does not exist, onCreate executes all sql statements
     // in the "migrationScripts" map one by one in ascending order.
     onCreate: (Database db, int version) async {
+      print("sqflite onCreate version $version");
       for (int i = 1; i <= count; i++) {
         await db.execute(migrationScripts[i]);
       }
@@ -34,6 +35,8 @@ Future<void> initDatabase() async {
     // from the version defined in parameter, onUpgrade will execute all sql
     // statements greater than the old version.
     onUpgrade: (db, oldVersion, newVersion) async {
+      print("sqflite onUpgrade version "
+          "$oldVersion -> $newVersion");
       for (int i = oldVersion + 1; i <= newVersion; i++) {
         await db.execute(migrationScripts[i]);
       }
