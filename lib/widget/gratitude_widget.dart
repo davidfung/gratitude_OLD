@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:gratitude/app_header.dart';
-import 'package:gratitude/model/app_model.dart';
+import 'package:gratitude/model/gratitude_model.dart';
 import 'package:intl/intl.dart';
 
-class GItemWidget extends StatelessWidget {
+class GratitudeWidget extends StatelessWidget {
   final String title;
   final String body;
   final Icon icon;
 
-  GItemWidget(this.title, this.body, this.icon);
+  GratitudeWidget(this.title, this.body, this.icon);
 
-  GItemWidget.fromGItem(GItem item)
-      : title = DateFormat("EEEE, MMMM d, yyyy").format(item.date),
+  GratitudeWidget.fromItem(Gratitude item)
+      : title = DateFormat("EEEE, MMMM d, yyyy").format(item.cdate),
         body = item.content,
-        icon = GIconSet[item.iconId];
+        icon = GIconSet[item.icon];
 
   @override
   Widget build(BuildContext context) {

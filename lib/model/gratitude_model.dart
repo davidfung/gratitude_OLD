@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:gratitude/app_header.dart';
 
-class GItem {
+class Gratitude {
   int id;
-  DateTime date;
+  DateTime cdate;
   String content;
-  GIconID iconId;
+  int icon;
 
-  GItem({
+  Gratitude({
     this.id,
-    @required this.date,
+    @required this.cdate,
     this.content,
-    this.iconId,
+    this.icon,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'date': date,
+      'cdate': cdate,
       'content': content,
-      'iconID': iconId,
+      'icon': icon,
     };
   }
 }

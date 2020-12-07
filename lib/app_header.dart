@@ -32,24 +32,23 @@ MaterialColor secColor = MaterialColor(0xFFcddb89, greenColorMap);
 
 const String APP_TITLE = "Gratitude";
 
-enum GIconID {
-  add_alert,
-  assistant_photo,
-  attach_file,
-  call,
-  directions_bike,
-  directions_walk,
-  people,
-  portrait,
-}
+// icon name should match the material icon counterpart for easy reference
+const int icon_add_alert = 1;
+const int icon_assistant_photo = 2;
+const int icon_attach_file = 3;
+const int icon_call = 4;
+const int icon_directions_bike = 5;
+const int icon_directions_walk = 6;
+const int icon_people = 7;
+const int icon_portrait = 8;
 
-const Map<GIconID, Icon> GIconSet = {
-  GIconID.add_alert: Icon(Icons.add_alert),
-  GIconID.assistant_photo: Icon(Icons.assistant_photo),
-  GIconID.attach_file: Icon(Icons.attach_file),
-  GIconID.call: Icon(Icons.call),
-  GIconID.directions_bike: Icon(Icons.directions_bike),
-  GIconID.directions_walk: Icon(Icons.directions_walk),
-  GIconID.people: Icon(Icons.people),
-  GIconID.portrait: Icon(Icons.portrait),
+const Map<int, Icon> GIconSet = {
+  icon_add_alert: Icon(Icons.add_alert),
+  icon_assistant_photo: Icon(Icons.assistant_photo),
+  icon_attach_file: Icon(Icons.attach_file),
+  icon_call: Icon(Icons.call),
+  icon_directions_bike: Icon(Icons.directions_bike),
+  icon_directions_walk: Icon(Icons.directions_walk),
+  icon_people: Icon(Icons.people),
+  icon_portrait: Icon(Icons.portrait),
 };
