@@ -38,10 +38,10 @@ class MainDrawer extends StatelessWidget {
 //            color: Theme.of(context).accentColor,
 //          ),
           buildListTile(AboutView.title, Icons.settings, () {
-            Navigator.of(context).popAndPushNamed(ROUTE_APP_SETTING);
+            Navigator.of(context).popAndPushNamed(ROUTE_APP_ABOUT);
           }),
           buildListTile(SettingView.title, Icons.info_outline, () {
-            Navigator.of(context).popAndPushNamed(ROUTE_APP_ABOUT);
+            Navigator.of(context).popAndPushNamed(ROUTE_APP_SETTING);
           }),
         ],
       ),

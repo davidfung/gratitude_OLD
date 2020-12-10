@@ -5,9 +5,12 @@ class SettingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.red,
-      child: Text("Settings"),
+    return Scaffold(
+      appBar: AppBar(title: Text(title)),
+      body: Container(
+        color: Colors.teal,
+        child: Center(child: Text(title)),
+      ),
     );
   }
 }

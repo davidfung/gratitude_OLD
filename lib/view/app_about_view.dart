@@ -6,10 +6,10 @@ class AboutView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Add a Gratitude")),
+      appBar: AppBar(title: Text(title)),
       body: Container(
         color: Colors.yellow,
-        child: Center(child: Text("About")),
+        child: Center(child: Text(title)),
       ),
     );
   }
