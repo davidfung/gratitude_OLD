@@ -2,20 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gratitude/app_header.dart';
 import 'package:gratitude/provider/gratitude_provider.dart';
 import 'package:gratitude/util/app_settings.dart';
-import 'package:gratitude/view/about_view.dart';
-import 'package:gratitude/view/gratitude_add_view.dart';
-import 'package:gratitude/view/gratitude_edit_view.dart';
-import 'package:gratitude/view/gratitude_list_view.dart';
-import 'package:gratitude/view/setting_view.dart';
 import 'package:provider/provider.dart';
-
-final Map<String, WidgetBuilder> routesMap = {
-  '/': (context) => Home(),
-  ItemAddView.routeName: (context) => ItemAddView(),
-  ItemEditView.routeName: (context) => ItemEditView(),
-  AboutView.routeName: (context) => AboutView(),
-  SettingView.routeName: (context) => SettingView(),
-};
+import 'package:gratitude/route.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,49 +28,4 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-}
-
-class Home extends StatefulWidget {
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          APP_TITLE,
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
-      body: GratitudeView(),
-      floatingActionButton: FloatingActionButton(
-        //onPressed: _addItem,
-        onPressed: () {
-          Navigator.pushNamed(context, AboutView.routeName);
-        },
-        tooltip: 'Add Gratitude',
-        child: const Icon(Icons.add),
-      ),
-    );
-  }
-
-  // void _addItem() {
-  //   showDialog(
-  //       context: context,
-  //       builder: (_) => new AlertDialog(
-  //             title: new Text("Gratitude"),
-  //             content: new Text("In the future, you can add a gratitude here!"),
-  //             actions: <Widget>[
-  //               FlatButton(
-  //                 child: Text('OK'),
-  //                 onPressed: () {
-  //                   Navigator.of(context).pop();
-  //                 },
-  //               )
-  //             ],
-  //           ));
-  // }
 }

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ItemAddView extends StatelessWidget {
-  static const String routeName = "/add";
+class GratitudeAddView extends StatelessWidget {
+  static const String title = 'Add a Gratitude';
+
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.blue,
-      child: Text("Item Add"),
+      child: Text("Gratitude Add"),
     );
   }
 }

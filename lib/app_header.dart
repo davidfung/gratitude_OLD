@@ -52,3 +52,8 @@ const Map<int, Icon> GIconSet = {
   icon_people: Icon(Icons.people),
   icon_portrait: Icon(Icons.portrait),
 };
+
+const String ROUTE_APP_ABOUT = "/about";
+const String ROUTE_APP_SETTING = "/setting";
+const String ROUTE_GRATITUDE_ADD = "/add";
+const String ROUTE_GRATITUDE_EDIT = "/edit";

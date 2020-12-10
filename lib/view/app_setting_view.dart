@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SettingView extends StatelessWidget {
-  static const String routeName = "/settings";
+  static const String title = 'Settings';
+
   @override
   Widget build(BuildContext context) {
     return Container(
