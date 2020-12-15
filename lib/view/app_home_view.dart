@@ -18,10 +18,10 @@ class HomeView extends StatelessWidget {
       drawer: MainDrawer(),
       body: GratitudeListWidget(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        // onPressed: () {
-        //   Navigator.pushNamed(context, AboutView.routeName);
-        // },
+        // onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, ROUTE_GRATITUDE_ADD);
+        },
         tooltip: 'Add Gratitude',
         child: const Icon(Icons.add),
       ),

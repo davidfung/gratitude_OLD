@@ -33,6 +33,7 @@ MaterialColor secColor = MaterialColor(0xFFcddb89, greenColorMap);
 const String APP_TITLE = "Gratitude";
 
 // icon name should match the material icon counterpart for easy reference
+const int icon_default = 0;
 const int icon_add_alert = 1;
 const int icon_assistant_photo = 2;
 const int icon_attach_file = 3;
@@ -43,6 +44,7 @@ const int icon_people = 7;
 const int icon_portrait = 8;
 
 const Map<int, Icon> GIconSet = {
+  icon_default: Icon(Icons.add_alert),
   icon_add_alert: Icon(Icons.add_alert),
   icon_assistant_photo: Icon(Icons.assistant_photo),
   icon_attach_file: Icon(Icons.attach_file),

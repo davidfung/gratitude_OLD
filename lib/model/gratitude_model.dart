@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import '../app_header.dart';
 
 class Gratitude {
   int id;
@@ -6,17 +6,19 @@ class Gratitude {
   String content;
   int icon;
 
-  Gratitude({
-    this.id,
-    @required this.cdate,
-    this.content,
-    this.icon,
-  });
+  Gratitude({this.id, this.cdate, this.content, this.icon}) {
+    if (null == this.cdate) {
+      this.cdate = DateTime.now();
+    }
+    if (null == this.icon) {
+      this.icon = icon_default;
+    }
+  }
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'cdate': cdate,
+      'cdate': cdate.toIso8601String(),
       'content': content,
       'icon': icon,
     };
