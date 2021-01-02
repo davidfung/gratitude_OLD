@@ -5,16 +5,20 @@ import 'package:provider/provider.dart';
 
 class GratitudeAddView extends StatelessWidget {
   static const String title = 'Add a Gratitude';
-  static const String _addButtonName = "Add";
+  final _teController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    String _title;
-    final _teController = TextEditingController();
-
     return Scaffold(
       appBar: AppBar(
+        leading: _buildCancelButton(context),
         title: Text(title),
+        actions: [
+          _buildSaveButton(context),
+          SizedBox(
+            width: 10,
+          )
+        ],
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
@@ -25,24 +29,31 @@ class GratitudeAddView extends StatelessWidget {
               keyboardType: TextInputType.multiline,
               maxLines: 10,
               controller: _teController,
-              onChanged: (title) {
-                _title = title;
-              },
-            ),
-            RaisedButton(
-              child: Text(_addButtonName),
-              onPressed: () {
-                _title = _teController.text ?? "";
-                if (_title.length > 0) {
-                  Provider.of<Gratitudes>(context, listen: false)
-                      .addTask(Gratitude(content: _title.trim()));
-                }
-                Navigator.pop(context);
-              },
+
             ),
           ],
         ),
       ),
     );
+  }
+
+  Widget _buildSaveButton(BuildContext context) {
+    String _content;
+    return IconButton(
+      icon: Icon(Icons.check),
+      onPressed: () {
+        _content = _teController.text ?? "";
+        if (_content.length > 0) {
+          Provider.of<Gratitudes>(context, listen: false)
+              .addTask(Gratitude(content: _content.trim()));
+        }
+        Navigator.pop(context);
+      },
+    );
+  }
+
+  Widget _buildCancelButton(BuildContext context) {
+    return IconButton(
+        icon: Icon(Icons.close), onPressed: () => {Navigator.pop(context)},);
   }
 }
