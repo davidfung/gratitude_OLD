@@ -45,7 +45,7 @@ class GratitudeAddView extends StatelessWidget {
         _content = _teController.text ?? "";
         if (_content.length > 0) {
           Provider.of<Gratitudes>(context, listen: false)
-              .addTask(Gratitude(content: _content.trim()));
+              .addItem(Gratitude(content: _content.trim()));
         }
         Navigator.pop(context);
       },

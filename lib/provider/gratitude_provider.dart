@@ -28,20 +28,20 @@ class Gratitudes with ChangeNotifier {
 
   @override
   Gratitudes() {
-    loadTasks();
+    loadItems();
   }
 
   List<Gratitude> get items {
     return UnmodifiableListView<Gratitude>(_items);
   }
 
-  void loadTasks() async {
+  void loadItems() async {
     await _dbOpen();
     await _dbLoad();
     notifyListeners();
   }
 
-  void addTask(Gratitude gratitude) {
+  void addItem(Gratitude gratitude) {
     //TODO: make it an option to add to top or bottom of list
     //// _items.add(task);
     _items.insert(0, gratitude);
@@ -49,14 +49,14 @@ class Gratitudes with ChangeNotifier {
     notifyListeners();
   }
 
-  void editTask(int index, String content) {
+  void editItem(int index, String content) {
     _items[index].content = content;
     _dbUpdate(_items[index]);
     _items.insert(0, _items.removeAt(index));
     notifyListeners();
   }
 
-  void removeTask(int index) {
+  void removeItem(int index) {
     _dbDelete(_items[index].id);
     _items.removeAt(index);
     notifyListeners();
@@ -94,7 +94,7 @@ class Gratitudes with ChangeNotifier {
 
   Future<void> _dbLoad() async {
     final List<Map<String, dynamic>> result = await db.query(TABLE_NAME);
-    // Convert the List<Map<String, dynamic> into a List<Task>.
+    // Convert the List<Map<String, dynamic> into a List<Gratitude>.
     _items = List.generate(result.length, (i) {
       return Gratitude(
         id: result[i]['id'],
@@ -103,7 +103,7 @@ class Gratitudes with ChangeNotifier {
         icon: result[i]['icon'],
       );
     });
-    // Sort the item list by last modified time descending
+    // Sort the item list by creation time descending
     _items.sort((a, b) => -a.cdate.compareTo(b.cdate));
   }
 

@@ -20,7 +20,7 @@ class _GratitudeListWidgetState extends State<GratitudeListWidget> {
         return Dismissible(
           key: UniqueKey(),
           onDismissed: (direction) {
-            gratitudes.removeTask(index);
+A            gratitudes.removeItem(index);
           },
           background: Container(
               alignment: AlignmentDirectional.centerStart,
