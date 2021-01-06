@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gratitude/app_header.dart';
-import 'package:gratitude/model/gratitude_model.dart';
 import 'package:gratitude/provider/gratitude_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +28,7 @@ class _GratitudeListWidgetState extends State<GratitudeListWidget> {
                 padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                 child: Icon(Icons.cancel, color: Colors.white),
               )),
-          child: GratitudeWidget.fromItem(gratitudes.items[index]),
+          child: GratitudeWidget.fromItemIndex(gratitudes, index),
           secondaryBackground: Container(
               alignment: AlignmentDirectional.centerEnd,
               color: Colors.red,
@@ -47,13 +46,15 @@ class GratitudeWidget extends StatelessWidget {
   final String title;
   final String body;
   final Icon icon;
+  final int index;
 
-  GratitudeWidget(this.title, this.body, this.icon);
+  GratitudeWidget(this.title, this.body, this.icon, this.index);
 
-  GratitudeWidget.fromItem(Gratitude item)
-      : title = DateFormat("EEEE, MMMM d, yyyy").format(item.cdate),
-        body = item.content,
-        icon = GIconSet[item.icon];
+  GratitudeWidget.fromItemIndex(Gratitudes gratitudes, int index)
+      : title = DateFormat("EEEE, MMMM d, yyyy").format(gratitudes.items[index].cdate),
+        body = gratitudes.items[index].content,
+        icon = GIconSet[gratitudes.items[index].icon],
+        index = index;
 
   @override
   Widget build(BuildContext context) {
@@ -63,18 +64,9 @@ class GratitudeWidget extends StatelessWidget {
           style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
       subtitle:
           Text(body, style: TextStyle(fontSize: 14.0, color: Colors.black)),
+      onTap: () {
+        Navigator.pushNamed(context, ROUTE_GRATITUDE_EDIT, arguments: index);
+      },
     );
-  }
-}
-
-class GDividerWidgetNOTUSE extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        child: SizedBox(
-          height: 1,
-        ),
-        //color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
-        color: secColor);
   }
 }
