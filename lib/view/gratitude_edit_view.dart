@@ -5,21 +5,20 @@ import '../provider/gratitude_provider.dart';
 
 class GratitudeEditView extends StatelessWidget {
   static const String title = "Edit Gratitude";
+  final _teController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     final int index = ModalRoute.of(context).settings.arguments;
-    final String taskName = Provider.of<Gratitudes>(context).items[index].content;
-    final _teController = TextEditingController();
-
-    String _title;
-    _teController.text = taskName;
+    _teController.text = Provider.of<Gratitudes>(context).items[index].content;
 
     return Scaffold(
       appBar: AppBar(
+        leading: _buildCancelButton(context),
         title: Text(title),
         actions: <Widget>[
-          SizedBox(width: 15)
+          _buildSaveButton(context, index),
+          SizedBox(width: 10)
         ],
       ),
       body: Container(
@@ -31,22 +30,29 @@ class GratitudeEditView extends StatelessWidget {
               keyboardType: TextInputType.multiline,
               maxLines: 10,
               controller: _teController,
-              onChanged: (title) {
-                _title = title;
-              },
-            ),
-            RaisedButton(
-              child: Text("SAVE"),
-              onPressed: () {
-                if (_title != null) {
-                  Provider.of<Gratitudes>(context).editItem(index, _title.trim());
-                }
-                Navigator.pop(context);
-              },
             ),
           ],
         ),
       ),
     );
+  }
+
+  Widget _buildSaveButton(BuildContext context, int index) {
+    String _content;
+    return IconButton(
+      icon: Icon(Icons.check),
+      onPressed: () {
+        _content = _teController.text ?? "";
+        if (_content.length > 0){
+          Provider.of<Gratitudes>(context, listen: false).editItem(index, _content.trim());
+        }
+        Navigator.pop(context);
+      },
+    );
+  }
+
+  Widget _buildCancelButton(BuildContext context) {
+    return IconButton(
+      icon: Icon(Icons.close), onPressed: () => {Navigator.pop(context)},);
   }
 }

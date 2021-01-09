@@ -4,7 +4,7 @@ import 'package:gratitude/provider/gratitude_provider.dart';
 import 'package:provider/provider.dart';
 
 class GratitudeAddView extends StatelessWidget {
-  static const String title = 'Add a Gratitude';
+  static const String title = 'Add Gratitude';
   final _teController = TextEditingController();
 
   @override
