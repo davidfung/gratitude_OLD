@@ -11,8 +11,8 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          title,
-          style: TextStyle(color: Colors.white),
+          title
+
         ),
       ),
       drawer: MainDrawer(),
