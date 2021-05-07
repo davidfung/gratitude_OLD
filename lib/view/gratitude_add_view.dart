@@ -29,7 +29,6 @@ class GratitudeAddView extends StatelessWidget {
               keyboardType: TextInputType.multiline,
               maxLines: 10,
               controller: _teController,
-
             ),
           ],
         ),
@@ -39,13 +38,14 @@ class GratitudeAddView extends StatelessWidget {
 
   Widget _buildSaveButton(BuildContext context) {
     String _content;
+    DateTime pickDate = ModalRoute.of(context).settings.arguments as DateTime;
     return IconButton(
       icon: Icon(Icons.check),
       onPressed: () {
         _content = _teController.text ?? "";
         if (_content.length > 0) {
           Provider.of<Gratitudes>(context, listen: false)
-              .addItem(Gratitude(content: _content.trim()));
+              .addItem(Gratitude(cdate: pickDate, content: _content.trim()));
         }
         Navigator.pop(context);
       },
@@ -54,6 +54,8 @@ class GratitudeAddView extends StatelessWidget {
 
   Widget _buildCancelButton(BuildContext context) {
     return IconButton(
-        icon: Icon(Icons.close), onPressed: () => {Navigator.pop(context)},);
+      icon: Icon(Icons.close),
+      onPressed: () => {Navigator.pop(context)},
+    );
   }
 }

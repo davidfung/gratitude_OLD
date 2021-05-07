@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:gratitude/route.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  // WidgetsFlutterBinding.ensureInitialized();
   await initSettings();
   runApp(MyApp());
 }
